@@ -1,0 +1,96 @@
+:root {
+    --color-primary:#8f44fd;
+    --tab-width:300px;
+    --button-width:64px;
+
+}
+
+* {
+    margin: 0;
+    /* padding: 0; */
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+body {
+    display: grid;
+    place-items: center;
+    color: #f9f9f9;
+    background-color: #24262a;
+    line-height: 1.5;
+}
+input {
+    display: none;
+}
+label {
+    padding: 20px;
+    font-size: 20px;
+    opacity: 0.35;
+    width: var(--button-width);
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.widget {
+    background-color: #17181a;
+    width: var(--tab-width);
+    border-radius: 8px;
+}
+.content {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+}
+.inner-content {
+    position: absolute;
+    width: calc(var(--tab-width) * 3);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    transition:all 0.3s;
+}
+.inner-content > div {
+    width: inherit;
+    padding: 20px;
+}
+.buttons {
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid #575757;
+}
+.underline {
+    position: absolute;
+    width: 64px;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--color-primary);
+    transition: 0.2s;
+}
+.tabs input:nth-child(1):checked ~ .buttons .underline {
+    translate: 0 0;
+}
+.tabs input:nth-child(2):checked ~ .buttons .underline {
+    translate: var(--button-width) 0;
+}
+.tabs input:nth-child(3):checked ~ .buttons .underline {
+    translate:calc(var(--button-width) * 2) 0;
+}
+.tabs input:nth-child(1):checked ~ .buttons label:nth-child(1),
+.tabs input:nth-child(2):checked ~ .buttons label:nth-child(2),
+.tabs input:nth-child(3):checked ~ .buttons label:nth-child(3) {
+    opacity: 1;
+}
+.tabs input:nth-child(1):checked ~  .content > .inner-content {
+  translate: 0 0;
+}
+
+.tabs input:nth-child(2):checked ~  .content > .inner-content {
+  translate:calc(0px - var(--tab-width)) 0;
+}
+.tabs input:nth-child(3):checked ~  .content > .inner-content {
+  translate:calc(0px - var(--tab-width) * 2) 0;
+}
